@@ -1,0 +1,88 @@
+@EduTechBlogsApi_HostAddress = https://localhost:7138
+
+
+POST {{EduTechBlogsApi_HostAddress}}/api/authentication/register-user
+Content-Type: application/json
+
+{
+  "firstName": "Bruno",
+  "lastName": "Mugambi",
+  "email": "Bruno@bruno.com",
+  "userName": "Bruno",
+  "password": "Karibu@2025",
+  "role": "Reader"
+}
+
+### Login user
+
+POST {{EduTechBlogsApi_HostAddress}}/api/authentication/login-user
+Content-Type: application/json
+
+{
+   "email": "Bruno@bruno.com",
+  "password": "Karibu@2025"
+}
+
+### Refresh Token
+
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQnJ1bm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjE3OGJjNTEzLWVkMWMtNGEzOS1hZTdkLTlkZmQ5MWY0YjY1NiIsImVtYWlsIjoiQnJ1bm9AYnJ1bm8uY29tIiwic3ViIjoiQnJ1bm9AYnJ1bm8uY29tIiwianRpIjoiNGZhZDI0MjYtNTc3Yy00ZmRmLWI3ZmYtMzA1NGYwODU5Nzg4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUmVhZGVyIiwiZXhwIjoxNzM0MzUzNzUxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTM4IiwiYXVkIjoidXNlciJ9.VJvh6-6i40_gQ9zeMZS8ZgGeTqFnDpSbNxpLnt38EAc
+POST {{EduTechBlogsApi_HostAddress}}/api/authentication/refresh-token
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQnJ1bm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjE3OGJjNTEzLWVkMWMtNGEzOS1hZTdkLTlkZmQ5MWY0YjY1NiIsImVtYWlsIjoiQnJ1bm9AYnJ1bm8uY29tIiwic3ViIjoiQnJ1bm9AYnJ1bm8uY29tIiwianRpIjoiZDNiZTVjOTgtOTE3MC00YmExLWI0MWQtMzBiMDc4ZTdjZmE3IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUmVhZGVyIiwiZXhwIjoxNzM0MzUzMTE0LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTM4IiwiYXVkIjoidXNlciJ9.mWH6g8YS_bvY_EZG3X5MNc1MdXZg-jEuSzMj54jStBU",
+  "refreshToken": "2e0ca02d-f4dc-4a20-bddf-630fbb0fa7a9-0505cfb8-c52c-457e-b8aa-1e6f050ce2ec" 
+}
+
+### Create a Blog
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VtYm9pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI1MGMzM2Q4My04MWIxLTQ0ZDctYmMwMy1mYTAxZTgyYWM4YWMiLCJlbWFpbCI6ImtlbWJvaUBrZW1ib2kuY29tIiwic3ViIjoia2VtYm9pQGtlbWJvaS5jb20iLCJqdGkiOiJjNzM4OThmZC0yMWQ1LTRhZGYtYTk0ZC01N2M1M2I4OWIyMGMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3MzQzNTM5MjIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMzgiLCJhdWQiOiJ1c2VyIn0.LzfKzRAU91Oaq0Tl5BdwAgZrSnwNEKjhpgHGSoC5TuQ
+
+POST {{EduTechBlogsApi_HostAddress}}/api/blogitems
+Authorization: Bearer {{token}}
+Content-Type: application/json
+  
+{
+  "title": "What is .NET",
+  "description": "In this blog post, we will be discussing what .NET is and how it works.",
+  "authorId": "50c33d83-81b1-44d7-bc03-fa01e82ac8ac",
+  "body": " .NET is a free, cross-platform, open-source developer platform for building many different types of applications. With .NET, you can use multiple languages, editors, and libraries to build for web, mobile, desktop, gaming, and IoT."
+}
+
+### Get all blog items
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VtYm9pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI1MGMzM2Q4My04MWIxLTQ0ZDctYmMwMy1mYTAxZTgyYWM4YWMiLCJlbWFpbCI6ImtlbWJvaUBrZW1ib2kuY29tIiwic3ViIjoia2VtYm9pQGtlbWJvaS5jb20iLCJqdGkiOiJjNzM4OThmZC0yMWQ1LTRhZGYtYTk0ZC01N2M1M2I4OWIyMGMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3MzQzNTM5MjIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMzgiLCJhdWQiOiJ1c2VyIn0.LzfKzRAU91Oaq0Tl5BdwAgZrSnwNEKjhpgHGSoC5TuQ
+GET {{EduTechBlogsApi_HostAddress}}/api/blogitems
+Authorization: Bearer {{token}}
+
+### Get a single blog item
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VtYm9pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI1MGMzM2Q4My04MWIxLTQ0ZDctYmMwMy1mYTAxZTgyYWM4YWMiLCJlbWFpbCI6ImtlbWJvaUBrZW1ib2kuY29tIiwic3ViIjoia2VtYm9pQGtlbWJvaS5jb20iLCJqdGkiOiJjNzM4OThmZC0yMWQ1LTRhZGYtYTk0ZC01N2M1M2I4OWIyMGMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3MzQzNTM5MjIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMzgiLCJhdWQiOiJ1c2VyIn0.LzfKzRAU91Oaq0Tl5BdwAgZrSnwNEKjhpgHGSoC5TuQ
+@id=12
+GET {{EduTechBlogsApi_HostAddress}}/api/blogitems/{{id}}
+Authorization: Bearer {{token}}
+
+### Update a blog item
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VtYm9pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI1MGMzM2Q4My04MWIxLTQ0ZDctYmMwMy1mYTAxZTgyYWM4YWMiLCJlbWFpbCI6ImtlbWJvaUBrZW1ib2kuY29tIiwic3ViIjoia2VtYm9pQGtlbWJvaS5jb20iLCJqdGkiOiJjNzM4OThmZC0yMWQ1LTRhZGYtYTk0ZC01N2M1M2I4OWIyMGMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3MzQzNTM5MjIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMzgiLCJhdWQiOiJ1c2VyIn0.LzfKzRAU91Oaq0Tl5BdwAgZrSnwNEKjhpgHGSoC5TuQ
+@id=12
+PUT {{EduTechBlogsApi_HostAddress}}/api/blogitems/{{id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+ {
+   "id": 10,
+  "title": "What is Azure Cosmos DB",
+  "description": "In this blog post, we will be discussing what Azure Cosmos DB is and how it works.",
+  "authorId": "50c33d83-81b1-44d7-bc03-fa01e82ac8ac",
+  "body": " Azure Cosmos DB is a fully managed NoSQL database service for modern app development. Get guaranteed single-digit millisecond response times and 99.999-percent availability, backed by SLAs, automatic and instant scalability, and open-source APIs for MongoDB and Cassandra."
+}
+
+### Delete a blog item
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VtYm9pIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI1MGMzM2Q4My04MWIxLTQ0ZDctYmMwMy1mYTAxZTgyYWM4YWMiLCJlbWFpbCI6ImtlbWJvaUBrZW1ib2kuY29tIiwic3ViIjoia2VtYm9pQGtlbWJvaS5jb20iLCJqdGkiOiJjNzM4OThmZC0yMWQ1LTRhZGYtYTk0ZC01N2M1M2I4OWIyMGMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBdXRob3IiLCJleHAiOjE3MzQzNTM5MjIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMzgiLCJhdWQiOiJ1c2VyIn0.LzfKzRAU91Oaq0Tl5BdwAgZrSnwNEKjhpgHGSoC5TuQ
+
+@id=11
+DELETE {{EduTechBlogsApi_HostAddress}}/api/blogitems/{{id}}
+Authorization: Bearer {{token}}
+
+
