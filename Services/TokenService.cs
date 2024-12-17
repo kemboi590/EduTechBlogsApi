@@ -1,8 +1,11 @@
 ﻿using EduTechBlogsApi.Models;
 using EduTechBlogsApi.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -29,7 +32,8 @@ namespace EduTechBlogsApi.Services
 
         public async Task<AuthResultVM> GenerateJWTToken(ApplicationUser user, RefreshToken? rToken)
         {
-            var authClaims = new List<Claim>
+            var authClaims = new List<Claim> // at the end the list will look like this: ["Name" = "user.UserName", "NameIdentifier" = "user.Id", "Email" = "user.Email", "Sub" = "user.Email", "Jti" = "Guid.NewGuid().ToString()"]
+           // [Name, NameIdentifier, Email, Sub, Jti, Role]
         {
             new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
             new Claim(ClaimTypes.NameIdentifier, user.Id),

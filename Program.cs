@@ -38,7 +38,7 @@ options.UseSqlServer(connectionString));
 //Add Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders(); // used to generate tokens for password reset, email confirmation, etc.
 
 //Add Token Service
 builder.Services.AddScoped<ITokenService,TokenService>();
